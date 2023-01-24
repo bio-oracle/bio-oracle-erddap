@@ -1,6 +1,6 @@
 ERDDAP_bigParentDirectory="/erddapData/"
-ERDDAP_baseUrl="http://localhost:8080"
-ERDDAP_baseHttpsUrl="http://localhost:8080"
+ERDDAP_baseUrl="http://erddap.bio-oracle.org:8080"
+ERDDAP_baseHttpsUrl="http://erddap.bio-oracle.org:8080"
 ERDDAP_flagKeyKey="4a0c345f-d494-4edc-b8c7-640c6d99f4b1"
 
 ERDDAP_emailEverythingTo="this+goes+nowhere@doesnotexist.ioos.us"
