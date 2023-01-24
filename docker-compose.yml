@@ -14,5 +14,6 @@ services:
       - "${PWD}/erddap/conf/robots.txt:/usr/local/tomcat/webapps/ROOT/robots.txt"
       - "${PWD}/erddap/content:/usr/local/tomcat/content/erddap"
       - "${PWD}/erddap/data:/erddapData"
-      - "${PWD}/datasets:/datasets"
+      - "/data/layers:/datasets"
+        # - "${PWD}/datasets:/datasets"
       - "/tmp/:/usr/local/tomcat/temp/"
