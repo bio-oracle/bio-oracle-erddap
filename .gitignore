@@ -1,6 +1,6 @@
 erddap/data
 logs
-
+**/__pycache__
 .idea
 *.iml
 .project
