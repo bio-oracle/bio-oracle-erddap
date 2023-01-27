@@ -28,7 +28,7 @@ def main():
 
 def process_layer(layer):
     layer = layer.replace("/data/layers", "/datasets")
-    cmd = f"./GenerateDatasetsXml.sh EDDGridFromNcFiles {layer} .*.nc {layer}climatologydecadedepthsurf.nc nothing nothing nothing nothing"
+    cmd = f"./GenerateDatasetsXml.sh EDDGridFromNcFiles {layer} climatologydecadedepthsurf.nc {layer}climatologydecadedepthsurf.nc nothing nothing nothing nothing"
     return cmd
 
 

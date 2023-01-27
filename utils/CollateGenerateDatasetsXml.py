@@ -44,7 +44,7 @@ def main():
             dataset_ids.append(dataset_id)
 
             # Extract decades and SSP from datasetID
-            decades = dataset_id.split("_")[-5:-3]
+            decades = ["-".join(dataset_id.split("_")[-5:-3]),]
             ssp = dataset_id.split("_")[1]  # TO-DO: change this for sourceAttributes.experiment
             ssp = [ssp.upper() if "ssp" in ssp else ssp.capitalize(),]
 
