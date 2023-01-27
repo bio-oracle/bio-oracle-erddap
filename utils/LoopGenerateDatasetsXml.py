@@ -22,7 +22,7 @@ def main():
         layer_basename = layer.split("/")[-2].rstrip("/")
         layer_dir = "/".join(layer.split("/")[:-1])
         filename = layer.split("/")[-1][:-3]
-        p = subprocess.Popen(process_layer(layer_dir).split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        p = subprocess.Popen(process_layer(layer_dir, filename).split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         stdout, stderr = p.communicate()
         with open(f"logs/datasets/logs/{layer_basename}_{filename}_stdout.log", "w") as f:
             f.write("stdout:\n")
