@@ -50,7 +50,7 @@ def main():
 
             # Iterate over attributes
             for attr in snip_root.find("sourceAttributes").iterfind("att"):
-                if title_attr := attr.get("name") == "title":
+                if (title_attr := attr).get("name") == "title":
                     title_attr.text = title_attr.text + " ".join(ssp + decades)
 
             
