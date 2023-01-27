@@ -5,3 +5,5 @@ logs
 *.iml
 .project
 .env
+utils/bkps
+erddap/content/history/*.xml
