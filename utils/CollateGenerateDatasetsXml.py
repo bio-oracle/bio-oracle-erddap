@@ -11,7 +11,7 @@ from tqdm import tqdm
 
 def main():
     main_xml = "./erddap/content/datasets_template.xml"
-    xml_snips = glob("./logs/loop/*.xml")
+    xml_snips = glob("./logs/datasets/*.xml")
 
     main_tree = ET.parse(main_xml)
     main_root = main_tree.getroot()
@@ -26,7 +26,7 @@ def main():
 
     datasets_file = "./erddap/content/datasets.xml"
 
-    backup = lambda file: copyfile(file, Path("./erddap/content/history/").joinpath(datetime.now().strftime("%Y-%m-%d-%T") + "." + str(Path(file.name))))
+    backup = lambda file: copyfile(file, Path("./erddap/content/history/").joinpath(datetime.now().strftime("%Y-%m-%d-%T") + "." + str(Path(file).name)))
     
     # Back up the old file
     backup(datasets_file)
