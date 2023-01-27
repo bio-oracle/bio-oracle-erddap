@@ -14,7 +14,7 @@ from CollateGenerateDatasetsXml import main as collate
 
 
 def main():
-    layers = glob("/data/layers/*/")
+    layers = glob("/data/layers/*/*.nc")
 
     print(f"Found {len(layers)} layers.")
     print(f"Processing layers with GenerateDatasetsXml.sh. Files will be created in the 'logs/datasets' directory.")
