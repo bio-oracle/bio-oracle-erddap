@@ -12,7 +12,7 @@ def main():
     layers = glob("/data/layers/*/")
 
     print(f"Found {len(layers)} layers.")
-    print(f"Processing layers. Files will be created in the 'logs/datasets' directory.")
+    print(f"Processing layers with GenerateDatasetsXml.sh. Files will be created in the 'logs/datasets' directory.")
     for layer in tqdm(layers):
         layer_basename = layer.split("/")[-2].rstrip("/")
         p = subprocess.Popen(process_layer(layer).split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
