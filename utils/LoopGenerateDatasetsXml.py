@@ -20,7 +20,7 @@ def main():
     print(f"Processing layers with GenerateDatasetsXml.sh. Files will be created in the 'logs/datasets' directory.")
     for layer in tqdm(layers):
         layer_basename = layer.split("/")[-2].rstrip("/")
-        filename = layer.split("/")[-1][:-2]
+        filename = layer.split("/")[-1][:-3]
         p = subprocess.Popen(process_layer(layer).split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         stdout, stderr = p.communicate()
         with open(f"logs/datasets/logs/{layer_basename}_{filename}_stdout.log", "w") as f:
