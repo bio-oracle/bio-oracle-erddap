@@ -1,5 +1,12 @@
 #!/usr/bin/env python
 
+"""
+This script takes all the files generated with LoopGenerateDatasetsXml and collates them as a 
+single datasets.xml file.
+
+Some formatting may also be done, e.g. adding attributes from sourceAttributes to addAttributes.
+"""
+
 from datetime import datetime
 from glob import glob
 from pathlib import Path
