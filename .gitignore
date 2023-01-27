@@ -10,3 +10,4 @@ logs/datasets/logs/*.log
 .env
 utils/bkps
 erddap/content/history/*.xml
+erddap/content/datasets.xml
