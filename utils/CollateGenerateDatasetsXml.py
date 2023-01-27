@@ -45,15 +45,13 @@ def main():
 
             # Extract decades and SSP from datasetID
             decades = dataset_id.split("_")[-5:-3]
-            ssp = dataset_id.split("_")[1]
+            ssp = dataset_id.split("_")[1]  # TO-DO: change this for sourceAttributes.experiment
             ssp = [ssp.upper() if "ssp" in ssp else ssp.capitalize(),]
 
             # Iterate over attributes
             for attr in snip_root.find("sourceAttributes").iterfind("att"):
                 if (title_attr := attr).get("name") == "title":
-                    title_attr.text = title_attr.text + " ".join(ssp + decades)
-
-            
+                    title_attr.text = title_attr.text.replace(".", " ") + " ".join(ssp + decades) + "."
 
             # Add dataset to main tree
             main_root.append(snip_root)
