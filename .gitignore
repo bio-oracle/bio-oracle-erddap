@@ -1,5 +1,8 @@
 erddap/data
-logs
+logs/*.log*
+logs/*.out*
+logs/datasets/*.xml
+logs/datasets/logs/*.log
 **/__pycache__
 .idea
 *.iml
