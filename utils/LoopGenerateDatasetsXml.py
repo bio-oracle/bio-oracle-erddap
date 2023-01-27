@@ -21,7 +21,6 @@ def main():
             f.write(stderr.decode())
         outfile_xml = "logs/datasets/" + layer_basename + ".xml"
         copyfile("logs/GenerateDatasetsXml.out", outfile_xml)
-        copyfile("logs/GenerateDatasetsXml.log", outfile_xml.replace("datasets", "datasets/logs"))
 
 
 def process_layer(layer):
