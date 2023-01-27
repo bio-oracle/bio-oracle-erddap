@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 
+"""
+This script loops over the datasets in the /data/layers/ directory and runs the GenerateDatasetsXml.sh
+script.
+"""
+
 from glob import glob
 from shutil import copyfile
 import subprocess
