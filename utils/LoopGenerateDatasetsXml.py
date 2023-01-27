@@ -20,8 +20,9 @@ def main():
     print(f"Processing layers with GenerateDatasetsXml.sh. Files will be created in the 'logs/datasets' directory.")
     for layer in tqdm(layers):
         layer_basename = layer.split("/")[-2].rstrip("/")
+        layer_dir = "/".join(layer.split("/")[:-1])
         filename = layer.split("/")[-1][:-3]
-        p = subprocess.Popen(process_layer(layer).split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        p = subprocess.Popen(process_layer(layer_dir).split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         stdout, stderr = p.communicate()
         with open(f"logs/datasets/logs/{layer_basename}_{filename}_stdout.log", "w") as f:
             f.write("stdout:\n")
@@ -32,10 +33,9 @@ def main():
         copyfile("logs/GenerateDatasetsXml.out", outfile_xml)
 
 
-def process_layer(layer):
-    layer = layer.replace("/data/layers", "/datasets")
-    filename = layer.split("/")[-1]
-    cmd = f"./GenerateDatasetsXml.sh EDDGridFromNcFiles {layer} {filename} {layer}{filename} nothing nothing nothing nothing"
+def process_layer(layer_dir, filename):
+    layer_dir = layer_dir.replace("/data/layers", "/datasets")
+    cmd = f"./GenerateDatasetsXml.sh EDDGridFromNcFiles {layer_dir} {filename}.nc {layer_dir}/{filename}.nc nothing nothing nothing nothing"
     return cmd
 
 
