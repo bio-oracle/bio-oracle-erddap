@@ -85,6 +85,14 @@ def main():
     # Write the new file
     
     main_tree.write(datasets_file, encoding="utf-8")
+    with open(datasets_file) as f:
+        lines = f.readlines()
+        lines = [i.replace("<sourceAttributes>", "<!-- sourceAttributes>").replace("</sourceAttributes>", "</sourceAttributes -->") for i in lines]
+
+    with open(datasets_file, "w") as f:
+        for line in lines:
+            f.write(line)
+
 
     xml_string = '<?xml version="1.0" encoding="ISO-8859-1" ?>'
 
