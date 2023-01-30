@@ -77,9 +77,13 @@ def main():
     backup = lambda file: copyfile(file, Path("./erddap/content/history/").joinpath(datetime.now().strftime("%Y-%m-%d-%T") + "." + str(Path(file).name)))
     
     # Back up the old file
-    backup(datasets_file)
+    try:
+        backup(datasets_file)
+    except FileNotFoundError:  # In case no file exists
+        pass
 
     # Write the new file
+    
     main_tree.write(datasets_file, encoding="utf-8")
 
     xml_string = '<?xml version="1.0" encoding="ISO-8859-1" ?>'
