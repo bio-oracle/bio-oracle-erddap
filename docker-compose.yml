@@ -1,8 +1,8 @@
 version: '2'
 services:
   erddap:
-    container_name: "erddap_gold_standard"
-    image: axiom/docker-erddap:2.18
+    container_name: "bio-oracle-erddap"
+    image: axiom/docker-erddap:2.22-jdk17-openjdk
     restart: unless-stopped
     ports:
       - "8080:8080"
@@ -15,5 +15,4 @@ services:
       - "${PWD}/erddap/content:/usr/local/tomcat/content/erddap"
       - "${PWD}/erddap/data:/erddapData"
       - "/data/layers:/datasets"
-        # - "${PWD}/datasets:/datasets"
       - "/tmp/:/usr/local/tomcat/temp/"
