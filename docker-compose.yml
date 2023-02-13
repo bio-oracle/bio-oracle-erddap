@@ -8,7 +8,7 @@ services:
       - "8080:8080"
     environment:
       ERDDAP_MIN_MEMORY: 1G
-      ERDDAP_MAX_MEMORY: 2G
+      ERDDAP_MAX_MEMORY: 12G
     volumes:
       - "${PWD}/erddap/conf/config.sh:/usr/local/tomcat/bin/config.sh"
       - "${PWD}/erddap/conf/robots.txt:/usr/local/tomcat/webapps/ROOT/robots.txt"
