@@ -43,7 +43,7 @@ def main(args):
             outfile_xml = "logs/datasets/" + layer_basename + "_" + filename + ".xml"
             copyfile("logs/GenerateDatasetsXml.out", outfile_xml)
         else:
-            print(cmd)
+            print(" ".join(cmd))
     if (not args.skip_collate) and (not args.dry_run):
         print("Finished generating XMLs. Collating.")
         collate()
