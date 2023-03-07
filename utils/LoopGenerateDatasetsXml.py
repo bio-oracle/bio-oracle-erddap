@@ -26,10 +26,11 @@ def main(args):
 
     n_layers = len(layers)
     print(f"Found {n_layers} layers.")
-    print(f"Processing layers with GenerateDatasetsXml.sh. Files will be created in the 'logs/datasets' directory.")
+    print("Processing layers with GenerateDatasetsXml.sh. Files will be created in the 'logs/datasets' directory.")
+    print("Please, be patient. This may take a few minutes.\n")
     for ix, layer in enumerate(layers):
-        if ((ix > 0) and (i % 10 == 0)) or (ix + 1 == n_layers):
-            print(f"Processed {ix}/{n_layers} layers.")
+        # if ((ix > 0) and (ix % 10 == 0)) or (ix + 1 == n_layers):
+        print(f"Processed {ix}/{n_layers} layers.", end="\r")
         layer_basename = layer.split("/")[-2].rstrip("/")
         layer_dir = "/".join(layer.split("/")[:-1])
         filename = layer.split("/")[-1][:-3]
