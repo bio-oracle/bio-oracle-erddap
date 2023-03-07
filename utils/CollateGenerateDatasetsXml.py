@@ -46,7 +46,17 @@ def main():
 
             # Flag the desired dataset to be refreshed
             dataset_id = snip_root.get("datasetID")
+
+            # Formatting of datasetID
+            depth = snip_root.find("fileNameRegex").text
             fmt_dataset_id = "_".join(dataset_id.split("_")[:-3])
+            fmt_dataset_id = f"{fmt_dataset_id}_{depth}"
+            for term in ["climatology", "decade"]:
+                fmt_dataset_id = fmt_dataset_id.replace(term, "")
+                fmt_dataset_id = fmt_dataset_id.replace(term.capitalize(), "")
+            fmt_dataset_id = fmt_dataset_id.replace(".nc", "")
+            fmt_dataset_id = fmt_dataset_id.replace("__", "_")
+            fmt_dataset_id = fmt_dataset_id.lower()
             snip_root.set("datasetID", fmt_dataset_id)
             dataset_ids.append(fmt_dataset_id)
 
