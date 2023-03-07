@@ -48,7 +48,9 @@ def main():
 
             # Flag the desired dataset to be refreshed
             dataset_id = snip_root.get("datasetID")
-            dataset_ids.append(dataset_id)
+            fmt_dataset_id = "_".join(dataset_id.split("_")[:-3])
+            snip_root.set("datasetID", fmt_dataset_id)
+            dataset_ids.append(fmt_dataset_id)
 
             # Extract decades and SSP from datasetID
             decades = ["-".join(dataset_id.split("_")[-5:-3]),]
