@@ -10,7 +10,6 @@ from glob import glob
 from shutil import copyfile
 import subprocess
 
-from tqdm import tqdm
 from CollateGenerateDatasetsXml import main as collate
 
 
@@ -25,9 +24,12 @@ def main(args):
         exclude = exclude.split(",")
         layers = [layer for layer in layers if not any([string in layer for string in include])]
 
-    print(f"Found {len(layers)} layers.")
+    n_layers = len(layers)
+    print(f"Found {n_layers} layers.")
     print(f"Processing layers with GenerateDatasetsXml.sh. Files will be created in the 'logs/datasets' directory.")
-    for layer in tqdm(layers):
+    for ix, layer in enumerate(layers):
+        if ((ix > 0) and (i % 10 == 0)) or (ix + 1 == n_layers):
+            print(f"Processed {ix}/{n_layers} layers.")
         layer_basename = layer.split("/")[-2].rstrip("/")
         layer_dir = "/".join(layer.split("/")[:-1])
         filename = layer.split("/")[-1][:-3]
