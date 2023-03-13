@@ -57,6 +57,10 @@ def main():
             fmt_dataset_id = fmt_dataset_id.replace(".nc", "")
             fmt_dataset_id = fmt_dataset_id.replace("__", "_")
             fmt_dataset_id = fmt_dataset_id.lower()
+
+            # special case
+            if fmt_dataset_id == "terrain_characteristics_terrain_characteristics":
+                fmt_dataset_id = "terrain_characteristics"
             snip_root.set("datasetID", fmt_dataset_id)
             dataset_ids.append(fmt_dataset_id)
 
@@ -71,6 +75,8 @@ def main():
             for attr in sourceAttributes.iterfind("att"):
                 if (title_attr := attr).get("name") == "title":
                     title_attr.text = title_attr.text.replace(".", " ") + " ".join(ssp + decades) + "."
+                    if " Characteristics terrain-characteristics" in title_attr.text:
+                        title_attr.text = title_attr.text.replace(" Characteristics terrain-characteristics", "")
                 addAttributes.append(attr)
 
             # Remove sourceAttributes
