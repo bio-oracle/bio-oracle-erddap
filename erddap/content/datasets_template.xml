@@ -22,7 +22,9 @@
     <!-- The defaults for the following tags are in messages.xml. -->
     <startHeadHtml5></startHeadHtml5>
     <startBodyHtml5>
-		<img src="tomcat/content/erddap/images/bio_oracle_thumbs.png">
+		<a href="https://bio-oracle.org/">
+			<img src="tomcat/content/erddap/bio_oracle_thumbs.png" alt="Bio-Oracle">
+		</a>
         <h1>ERDDAP server @ Bio-Oracle</h1>
 	</startBodyHtml5>                                 <!-- This is often customized. -->
     <theShortDescriptionHtml></theShortDescriptionHtml>               <!-- This is often customized. -->
