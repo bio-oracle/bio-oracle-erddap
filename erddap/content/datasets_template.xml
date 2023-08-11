@@ -23,7 +23,7 @@
     <startHeadHtml5></startHeadHtml5>
     <startBodyHtml5>
 		<a href="https://bio-oracle.org/">
-			<img src="tomcat/content/erddap/bio_oracle_thumbs.png" alt="Bio-Oracle">
+			<img src="&erddapUrl;/images/bio_oracle_thumbs.png" alt="Bio-Oracle">
 		</a>
         <h1>ERDDAP server @ Bio-Oracle</h1>
 	</startBodyHtml5>                                 <!-- This is often customized. -->
