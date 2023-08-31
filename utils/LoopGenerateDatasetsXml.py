@@ -41,7 +41,7 @@ def main(args):
             p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             stdout, stderr = p.communicate()
             outfile_xml = "logs/datasets/" + filename + ".xml" if args.layer_name_from == "filename" else "logs/datasets/" + layer_parent_dir + "_" + filename + ".xml"
-            with open((Path(outfile_xml).parent / "logs" / Path(outfile_xml).stem).with_suffix(".log")) as f:
+            with open((Path(outfile_xml).parent / "logs" / Path(outfile_xml).stem).with_suffix(".log"), "w") as f:
                 f.write("stdout:\n")
                 f.write(stdout.decode())
                 f.write("stderr:\n")
