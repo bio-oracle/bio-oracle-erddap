@@ -16,6 +16,10 @@ from CollateGenerateDatasetsXml import main as collate
 
 def main(args):
     layers = glob(args.glob_string)
+    layer_name_from = args.layer_name_from
+    choices = ["filename", "parent"]
+    if layer_name_from not in choices:
+        raise ValueError(f"layer_name_from must be one of {choices}.")
 
     if include := args.include:
         include = include.split(",")
@@ -35,8 +39,8 @@ def main(args):
         path_layer = Path(layer)
         layer_parent_dir = path_layer.parent
         layer_grandparent_dir = layer_parent_dir.parent
-        filename = path_layer.stem if args.layer_name_from == "filename" else layer_parent_dir.name
-        cmd = process_layer(layer_grandparent_dir, filename).split()
+        filename = path_layer.stem if layer_name_from == "filename" else layer_parent_dir.name
+        cmd = process_layer(layer_parent_dir if layer_name_from == "filename" else layer_grandparent_dir, filename).split()
         if not args.dry_run:
             p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             stdout, stderr = p.communicate()
