@@ -56,7 +56,7 @@ def main(args):
 
 
 def process_layer(layer_dir, filename):
-    layer_dir = layer_dir.replace("/data/layers", "/datasets")
+    layer_dir = str(layer_dir).replace("/data/layers", "/datasets")
     cmd = f"./GenerateDatasetsXml.sh EDDGridFromNcFiles {layer_dir} {filename}.nc {layer_dir}/{filename}.nc nothing nothing nothing nothing"
     return cmd
 
