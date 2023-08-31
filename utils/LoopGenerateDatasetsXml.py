@@ -40,12 +40,12 @@ def main(args):
         if not args.dry_run:
             p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             stdout, stderr = p.communicate()
-            with open(f"logs/datasets/logs/{layer_parent_dir}_{filename}_stdout.log", "w") as f:
+            outfile_xml = "logs/datasets/" + filename + ".xml" if args.layer_name_from == "filename" else "logs/datasets/" + layer_parent_dir + "_" + filename + ".xml"
+            with open(Path(outfile_xml).parent / outfile_xml.stem + "_sdout.log") as f:
                 f.write("stdout:\n")
                 f.write(stdout.decode())
                 f.write("stderr:\n")
                 f.write(stderr.decode())
-            outfile_xml = "logs/datasets/" + filename + ".xml" if args.layer_name_from == "filename" else "logs/datasets/" + layer_parent_dir + "_" + filename + ".xml"
             copyfile("logs/GenerateDatasetsXml.out", outfile_xml)
         else:
             print(" ".join(cmd))
