@@ -40,7 +40,7 @@ def main(args):
         layer_parent_dir = path_layer.parent
         layer_grandparent_dir = layer_parent_dir.parent
         filename = path_layer.stem if layer_name_from == "filename" else layer_parent_dir.name
-        cmd = process_layer(layer_parent_dir if layer_name_from == "filename" else layer_grandparent_dir, filename).split()
+        cmd = process_layer(filename).split()
         if not args.dry_run:
             p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             stdout, stderr = p.communicate()
@@ -59,9 +59,8 @@ def main(args):
         print("All done.")
 
 
-def process_layer(layer_dir, filename):
-    layer_dir = str(layer_dir).replace("/data/layers", "/datasets")
-    cmd = f"./GenerateDatasetsXml.sh EDDGridFromNcFiles {layer_dir} {filename}.nc {layer_dir}/{filename}.nc nothing nothing nothing nothing"
+def process_layer(filename):
+    cmd = f"./GenerateDatasetsXml.sh EDDGridFromNcFiles /datasets {filename}.nc /datasets/{filename}.nc nothing nothing nothing nothing"
     return cmd
 
 
