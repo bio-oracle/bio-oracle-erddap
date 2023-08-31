@@ -51,7 +51,7 @@ def main():
             depth = snip_root.find("fileNameRegex").text
             fmt_dataset_id = "_".join(dataset_id.split("_")[:-3])
             fmt_dataset_id = f"{fmt_dataset_id}_{depth}"
-            for term in ["climatology", "decade"]:
+            for term in ["climatology", "decade", "datasets_"]:
                 fmt_dataset_id = fmt_dataset_id.replace(term, "")
                 fmt_dataset_id = fmt_dataset_id.replace(term.capitalize(), "")
             fmt_dataset_id = fmt_dataset_id.replace(".nc", "")
@@ -77,6 +77,10 @@ def main():
                     title_attr.text = title_attr.text.replace(".", " ") + " ".join(ssp + decades) + "."
                     if " Characteristics terrain-characteristics" in title_attr.text:
                         title_attr.text = title_attr.text.replace(" Characteristics terrain-characteristics", "")
+                    terms = [" datasets.",]
+                    for term in terms:
+                        if term in title_attr.text:
+                            title_attr.text = title_attr.text.replace(term, "")
                 addAttributes.append(attr)
 
             # Remove sourceAttributes
