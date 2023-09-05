@@ -7,6 +7,7 @@ single datasets.xml file.
 Some formatting may also be done, e.g. adding attributes from sourceAttributes to addAttributes.
 """
 
+import argparse
 from datetime import datetime
 from glob import glob
 from pathlib import Path
@@ -14,7 +15,7 @@ from shutil import copyfile
 import xml.etree.ElementTree as ET
 
 
-def main():
+def main(args):
     print("Collating datasets into a single XML file.")
 
     main_xml = "./erddap/content/datasets_template.xml"
@@ -73,14 +74,15 @@ def main():
             addAttributes = snip_root.find("addAttributes")
             sourceAttributes = snip_root.find("sourceAttributes")
             for attr in sourceAttributes.iterfind("att"):
-                if (title_attr := attr).get("name") == "title":
-                    title_attr.text = title_attr.text.replace(".", " ") + " ".join(ssp + decades) + "."
-                    if " Characteristics terrain-characteristics" in title_attr.text:
-                        title_attr.text = title_attr.text.replace(" Characteristics terrain-characteristics", "")
-                    terms = [" datasets.",]
-                    for term in terms:
-                        if term in title_attr.text:
-                            title_attr.text = title_attr.text.replace(term, "")
+                if not args.skip_title_format:
+                    if (title_attr := attr).get("name") == "title":
+                        title_attr.text = title_attr.text.replace(".", " ") + " ".join(ssp + decades) + "."
+                        if " Characteristics terrain-characteristics" in title_attr.text:
+                            title_attr.text = title_attr.text.replace(" Characteristics terrain-characteristics", "")
+                        terms = [" datasets.",]
+                        for term in terms:
+                            if term in title_attr.text:
+                                title_attr.text = title_attr.text.replace(term, "")
                 addAttributes.append(attr)
 
             # Remove sourceAttributes
@@ -133,4 +135,7 @@ def main():
         Path(f"./erddap/data/flag/{dataset_id}").touch()
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--skip-title-format", action="store_true", default=False, required=False)
+    args = parser.parse_args()
+    main(args)
