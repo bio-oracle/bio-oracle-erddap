@@ -12,3 +12,4 @@ logs/datasets/logs/*.log
 .env
 .envrc
 *.code-workspace
+erddap/content/history/*.xml
