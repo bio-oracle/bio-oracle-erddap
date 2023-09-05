@@ -44,7 +44,7 @@ def main(args):
         if not args.dry_run:
             p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             stdout, stderr = p.communicate()
-            outfile_xml = "logs/datasets/" + filename + ".xml" if args.layer_name_from == "filename" else "logs/datasets/" + layer_parent_dir + "_" + filename + ".xml"
+            outfile_xml = "logs/datasets/" + filename + ".xml" if args.layer_name_from == "filename" else "logs/datasets/" + str(layer_parent_dir) + "_" + filename + ".xml"
             with open((Path(outfile_xml).parent / "logs" / Path(outfile_xml).stem).with_suffix(".log"), "w") as f:
                 f.write("stdout:\n")
                 f.write(stdout.decode())
@@ -69,7 +69,7 @@ if __name__ == "__main__":
     parser.add_argument("-i", "--include", help="INCLUDE strings, comma-separated. Only include datasets that contain these strings in their ID.", default=None, required=False)
     parser.add_argument("-e", "--exclude", help="EXCLUDE strings, comma-separated. Exclude datasets that contain these strings in their ID.", default=None, required=False)
     parser.add_argument("-g", "--glob-string", help="Glob string to be used to look for files.", default="/data/layers/*/*.nc", required=False)
-    parser.add_argument("--layer-name-from", help="Whether to use the layer name from the filename or from the parent directory. Default: 'parent'.", choices=["filename", "parent"], default="parent", required=False)
+    parser.add_argument("--layer-name-from", help="Whether to use the layer name from the filename or from the parent directory. Default: 'parent'.", choices=["filename", "parent"], default="filename", required=False)
     parser.add_argument("--skip-collate", help="Only generate the XML snippets, don't collate them with the CollateGenerateDatasetsXml.py script.", action="store_true", required=False)
     parser.add_argument("--dry-run", help="Only print the GenerateDatasetsXml.sh command and don't run anything.", action="store_true", required=False)
     args = parser.parse_args()
