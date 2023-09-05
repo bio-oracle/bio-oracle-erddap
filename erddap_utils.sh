@@ -1,7 +1,7 @@
 export ERDDAP_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 export ERDDAP_DATASETS_XML=${ERDDAP_DIR}/erddap/content/datasets.xml
-export ERDDAP_DATA_DIR=${ERDDAP_DIR}/datasets
-export ERDDAP_GENDATA_DIR=${ERDDAP_DIR}/generate_datasets
+export ERDDAP_DATA_DIR=${ERDDAP_DIR}/data
+export ERDDAP_GENDATA_DIR=${ERDDAP_DIR}/logs/datasets
 if [ -z $ERDDAP_URL ]; then
     export ERDDAP_URL=http://127.0.0.1:8080/erddap
 fi
