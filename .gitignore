@@ -1,11 +1,14 @@
+data/
 erddap/data
 logs/*.log*
 logs/*.out*
 logs/datasets/*.xml
 logs/datasets/logs/*.log
 **/__pycache__
+**/.DS_Store
 .idea
 *.iml
 .project
 .env
 .envrc
+*.code-workspace
