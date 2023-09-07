@@ -11,7 +11,7 @@ from datetime import datetime
 from glob import glob
 from pathlib import Path
 from shutil import copyfile
-import xml.etree.ElementTree as ET
+from lxml import etree
 
 
 def main():
@@ -21,7 +21,8 @@ def main():
     xml_snips = glob("./logs/datasets/*.xml")
 
     # Load main tree from template
-    main_tree = ET.parse(main_xml)
+    parser = etree.XMLParser(ns_clean=True, strip_cdata=False)
+    main_tree = etree.parse(main_xml, parser)
     main_root = main_tree.getroot()
 
     failed = []
@@ -41,7 +42,7 @@ def main():
                     f.write(line)
 
             # Parse XML
-            snip_tree = ET.parse(xml)
+            snip_tree = etree.parse(xml)
             snip_root = snip_tree.getroot()
 
             # Flag the desired dataset to be refreshed
@@ -84,7 +85,7 @@ def main():
                 
             # Add dataset to main tree
             main_root.append(snip_root)
-        except ET.ParseError:  # for empty files
+        except etree.ParseError:  # for empty files
             failed.append(xml)
             pass
 

@@ -22,7 +22,7 @@ def main(args):
 
     if exclude := args.exclude:
         exclude = exclude.split(",")
-        layers = [layer for layer in layers if not any([string in layer for string in include])]
+        layers = [layer for layer in layers if not any([string in layer for string in exclude])]
 
     n_layers = len(layers)
     print(f"Found {n_layers} layers.")
