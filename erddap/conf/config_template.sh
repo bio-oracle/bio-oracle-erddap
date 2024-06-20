@@ -1,5 +1,5 @@
 ERDDAP_MIN_MEMORY="1G"
-ERDDAP_MAX_MEMORY="2G"
+ERDDAP_MAX_MEMORY="12G"
 ERDDAP_bigParentDirectory="/erddapData/"
 ERDDAP_baseUrl="http://erddap.bio-oracle.org:8080"
 ERDDAP_baseHttpsUrl="http://erddap.bio-oracle.org:8080"
