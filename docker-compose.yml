@@ -1,14 +1,10 @@
-version: '2'
 services:
   erddap:
     container_name: "bio-oracle-erddap"
-    image: axiom/docker-erddap:2.22-jdk17-openjdk
+    image: axiom/docker-erddap:2.23-jdk17-openjdk
     restart: unless-stopped
     ports:
       - "8080:8080"
-    environment:
-      ERDDAP_MIN_MEMORY: 1G
-      ERDDAP_MAX_MEMORY: 12G
     volumes:
       - "${PWD}/erddap/conf/config.sh:/usr/local/tomcat/bin/config.sh"
       - "${PWD}/erddap/conf/robots.txt:/usr/local/tomcat/webapps/ROOT/robots.txt"
@@ -16,3 +12,30 @@ services:
       - "${PWD}/erddap/data:/erddapData"
       - "/data/layers:/datasets"
       - "/tmp/:/usr/local/tomcat/temp/"
+    environment:
+      #note: these can also be set in /usr/local/tomcat/bin/config.sh
+      ERDDAP_MIN_MEMORY: 2G
+      ERDDAP_MAX_MEMORY: 12G
+      ERDDAP_bigParentDirectory: /erddapData/
+      ERDDAP_baseUrl: "http://erddap.bio-oracle.org:8080"
+      ERDDAP_baseHttpsUrl: "http://erddap.bio-oracle.org:8080"
+      ERDDAP_flagKeyKey: "4a0c345f-d494-4edc-b8c7-640c6d99f4b1"
+      ERDDAP_emailEverythingT: this+goes+nowhere@doesnotexist.ioos.us
+      ERDDAP_emailDailyReportsTo:
+      ERDDAP_emailFromAddress:
+      ERDDAP_emailUserName:
+      ERDDAP_emailPassword:
+      ERDDAP_emailProperties:
+      ERDDAP_emailSmtpHost:
+      ERDDAP_emailSmtpPort:
+      ERDDAP_adminInstitution: Flanders Marine Institute (VLIZ)
+      ERDDAP_adminInstitutionUrl: https://vliz.be/en/
+      ERDDAP_adminIndividualName: VLIZ Data Manager
+      ERDDAP_adminPosition: Data Manager
+      ERDDAP_adminPhone:
+      ERDDAP_adminAddress:
+      ERDDAP_adminCity:
+      ERDDAP_adminStateOrProvince:
+      ERDDAP_adminPostalCode:
+      ERDDAP_adminCountry:
+      ERDDAP_adminEmail:

@@ -13,3 +13,4 @@ erddap/conf/config.sh
 erddap/content/history/*.xml
 erddap/content/datasets.xml
 erddap/content/setup.xml
+.envrc
