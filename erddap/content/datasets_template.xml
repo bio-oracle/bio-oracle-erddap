@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <erddapDatasets>
-    <cacheMinutes></cacheMinutes>                                     <!-- default=60 -->
-    <decompressedCacheMaxGB></decompressedCacheMaxGB>                 <!-- default=10 -->
+    <cacheMinutes>1440</cacheMinutes>                                     <!-- default=60 -->
+    <decompressedCacheMaxGB>100</decompressedCacheMaxGB>                 <!-- default=10 -->
     <decompressedCacheMaxMinutesOld></decompressedCacheMaxMinutesOld> <!-- default=15 -->
     <drawLandMask></drawLandMask>                                     <!-- "over" or "under" (default) -->
-    <emailDiagnosticsToErdData></emailDiagnosticsToErdData>           <!-- true (the default) or false -->
+    <emailDiagnosticsToErdData>false</emailDiagnosticsToErdData>           <!-- true (the default) or false -->
     <graphBackgroundColor></graphBackgroundColor>                     <!-- 0xAARRGGBB, default is 0xffccccff -->
-    <ipAddressMaxRequests></ipAddressMaxRequests>                     <!-- current default=7 -->
-    <ipAddressMaxRequestsActive></ipAddressMaxRequestsActive>         <!-- current default=2 -->
+    <ipAddressMaxRequests>100</ipAddressMaxRequests>                     <!-- current default=7 -->
+    <ipAddressMaxRequestsActive>20</ipAddressMaxRequestsActive>         <!-- current default=2 -->
     <ipAddressUnlimited></ipAddressUnlimited>                         <!-- default=empty -->
-    <loadDatasetsMinMinutes></loadDatasetsMinMinutes>                 <!-- usually=default=15 -->
-    <loadDatasetsMaxMinutes></loadDatasetsMaxMinutes>                 <!-- default=60 -->
+    <loadDatasetsMinMinutes>720</loadDatasetsMinMinutes>                 <!-- usually=default=15 -->
+    <loadDatasetsMaxMinutes>1440</loadDatasetsMaxMinutes>                 <!-- default=60 -->
     <logLevel></logLevel>                                             <!-- "warning" (fewest messages), "info" (default), or "all" (most messages) -->
-    <nGridThreads></nGridThreads>                                     <!-- default=1 if CPU>4cores=3 -->
-    <nTableThreads></nTableThreads>                                   <!-- default=1 if CPU>4cores=3-->
+    <nGridThreads>6</nGridThreads>                                     <!-- default=1 if CPU>4cores=3 -->
+    <nTableThreads>6</nTableThreads>                                   <!-- default=1 if CPU>4cores=3-->
     <partialRequestMaxBytes></partialRequestMaxBytes>                 <!-- default=490000000 -->
     <partialRequestMaxCells></partialRequestMaxCells>                 <!-- default=10000000 -->
     <slowDownTroubleMillis></slowDownTroubleMillis>                   <!-- default=1000 -->
